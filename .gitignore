@@ -9,14 +9,14 @@
 
 
 ## eclipse project files
-#.cproject
-#.project
-#.settings/
+.cproject
+.project
+.settings/
 
 ## QT project files
 #*.pro
-#*.pro.user
-#*.pro.user*
+*.pro.user
+*.pro.user*
 
 
 ## Prerequisites
