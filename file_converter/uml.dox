@@ -1,0 +1,20 @@
+/** @page uml Project analysis
+ */
+
+/** @page uml
+ @section external_view    External View
+ 
+ Perspective in User point of view:
+ - what features are offered
+ - scenarios and sequences of usage
+ 
+ 
+ @subsection usecase_diag    Use Case diagrams
+ 
+ @startuml
+  :User: -- (Indicate\n file for\n conversion)
+  :User: -- (Load\n conversions\n package)
+  :User: -- (Chose\n conversion\n type)
+  :User: -- (Convert\n file)
+ @enduml
+ */
