@@ -18,7 +18,7 @@ OBJS := $(SRCS:%.c=%.o)
 OBJS := $(OBJS:%.cpp=%.o)
 
 TEST_TRGT := utest
-TEST_SRCS := bitstream_checker_test.cpp
+TEST_SRCS := bitStreamChecker_test.cpp
 TEST_OBJS := $(TEST_SRCS:%.cpp=%.o)
 TEST_OBJS := $(TEST_OBJS:%.c=%.o)
 
