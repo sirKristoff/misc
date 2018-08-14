@@ -116,3 +116,45 @@ TEST(IosStreamBuf_Test, Rdbuf)
 
 	std::cin.rdbuf(orig_cin_streambuf_ptr);
 }
+
+
+class IosExceptions_Test: public ::testing::Test
+{
+public:
+	IosExceptions_Test() :
+		ssioPtr()
+	{
+	}
+
+protected:
+	virtual void SetUp()
+	{
+		ssioPtr = new std::stringstream();
+		std::stringstream& ssio= *ssioPtr;
+
+		ssio << "c " << expFloat << " " << expInt;
+	}
+
+	virtual void TearDown()
+	{
+		delete ssioPtr;
+	}
+
+public:
+	std::stringstream* ssioPtr;
+	const float expFloat = 3.1415;
+	const unsigned expInt = 10;
+};
+
+TEST_F(IosExceptions_Test, Basic)
+{
+	std::stringstream& ssio= *ssioPtr;
+
+	float actualFloat = 0.0;
+//	unsigned actualInt = 0;
+
+	ssio.exceptions( std::ios_base::failbit);
+
+	// TODO: investigate type of exeption which should be thrown
+	EXPECT_THROW((ssio>>actualFloat), std::ios_base::failure);
+}
