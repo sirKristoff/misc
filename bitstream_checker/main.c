@@ -31,7 +31,3 @@ int main()
 	bsc->free_self(bsc);
 	return 0;
 }
-
-
-
-
