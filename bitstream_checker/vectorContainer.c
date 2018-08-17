@@ -94,17 +94,21 @@ static void vc_clear(VectorContainer* self)
 	if( self->ctxt->freeElementOperator ){
 		FreeSetElementFun freeOp = self->ctxt->freeElementOperator;
 		for( size_t i = 0 ; i<self->ctxt->size ; ++i )
-			freeOp(self->ctxt->elements[i]);
+			if( self->ctxt->elements[i] )
+				freeOp(self->ctxt->elements[i]);
 	}
 	self->ctxt->size = 0;
+	// TODO: change capacity and allocation of elements
 }
 
 static SetElement* vc_find(VectorContainer* self, unsigned key)
 {
 	SetElement** elements = self->ctxt->elements;
-	for( size_t i = 0 ; i < self->ctxt->size ; ++i )
-		if( 0 != elements[i] && key == elements[i]->key )
-			return elements[i];
+//	for( size_t idx = 0 ; idx < self->ctxt->size ; ++idx )
+	SetElement elementToFind  = {key};
+	size_t idx = vc_elementIdx(self->ctxt, &elementToFind);
+		if( 0 != elements[idx] && key == elements[idx]->key )
+			return elements[idx];
 	return 0;
 }
 
@@ -129,7 +133,7 @@ static void vc_erase(VectorContainer* self, const SetElement* element)
 
 	// reduce capacity
 	if( (2*ctxt->size) < ctxt->capacity ){
-		size_t newCapacity = 1 + ctxt->capacity/2;
+		size_t newCapacity = (ctxt->size ? ctxt->size : 1);
 
 		if( ctxt->capacity == newCapacity )
 			return;  // no reallocation needed
@@ -174,7 +178,7 @@ static SetElement* vc_insert(VectorContainer* self, SetElement* newElement)
 
 	// if newElement not contains key
 	if( ! vc_isKeyElementSpecified(newElement) )
-		newElement->key = index; // chose next available index
+		newElement->key = index+1; // chose next available key
 
 	// if capacity to low - reallocate vector with elements
 	if( ctxt->capacity <= index ){

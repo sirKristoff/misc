@@ -36,7 +36,7 @@ all :  test appl
 
 
 $(TEST_TRGT) :  $(TEST_OBJS) $(OBJS)
-	$(CXX) $(CXXFLAGS) -pthread -lgtest_main -o $@  $^
+	$(CXX) $(CXXFLAGS) -pthread -lgmock_main -o $@  $^
 
 test :  $(TEST_TRGT)
 test-run :  test

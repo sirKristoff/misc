@@ -37,7 +37,9 @@ typedef struct  VectorContainer
 	 */
 	SetElement* (*find)(struct VectorContainer* self, unsigned key);
 
-	/** Removes from the container a single element.
+	/**
+	 * @brief Removes from the container a single element.
+	 * @note @a FreeSetElementFun will NOT be called for element.
 	 */
 	void (*erase)(struct VectorContainer* self, const SetElement*);
 
