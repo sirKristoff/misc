@@ -13,12 +13,17 @@ APPL_SRCS := main.c
 APPL_OBJS := $(APPL_SRCS:%.cpp=%.o)
 APPL_OBJS := $(APPL_OBJS:%.c=%.o)
 
-SRCS := bitStreamChecker.c tripleBitStreamChecker.c vectorContainer.c
+SRCS := bitStreamChecker.c \
+		tripleBitStreamChecker.c \
+		vectorContainer.c \
+		trivialBitStreamChecker.c
 OBJS := $(SRCS:%.c=%.o)
 OBJS := $(OBJS:%.cpp=%.o)
 
 TEST_TRGT := utest
-TEST_SRCS := bitStreamChecker_test.cpp setContainer_test.cpp
+TEST_SRCS := bitStreamChecker_test.cpp \
+			 setContainer_test.cpp \
+			 trivialBitStreamChecker_test.cpp
 TEST_OBJS := $(TEST_SRCS:%.cpp=%.o)
 TEST_OBJS := $(TEST_OBJS:%.c=%.o)
 
