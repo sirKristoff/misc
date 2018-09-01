@@ -13,7 +13,7 @@ APPL_SRCS := main.cpp
 APPL_OBJS := $(APPL_SRCS:%.cpp=%.o)
 APPL_OBJS := $(APPL_OBJS:%.c=%.o)
 
-SRCS := 
+SRCS := histogram.cpp
 OBJS := $(SRCS:%.c=%.o)
 OBJS := $(OBJS:%.cpp=%.o)
 
