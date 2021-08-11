@@ -1,0 +1,61 @@
+# Import needed python packages
+
+
+# ---------------------------------------------------------------------------- #
+
+# Import global build environment
+Import( 'env' )
+
+
+# -------------------------- LOAD SCONS BUILD CONFIGS ------------------------ #
+# The build configurations will be loaded from the Configuration directory, so 
+# all configuration files shall be declared relative to $SCONS_BUILDCONFIG_ROOT.
+# LoadBuildConfig also allows for absolute paths (for example
+# 'C:/some/file.scons') and paths relative to SCons ROOT (for example 
+# '#/some/subdirectory/with_a/configfile.scons')
+
+#env.LoadBuildConfig([])
+
+
+# ------------------------- INCLUDE SCONS DEPENDENCIES ----------------------- #
+
+# SCONS FILE DEPENDENCIES
+# If the files are above the current SConscript file, use path relative
+# to root (that is '#/some/sub/directory' )
+
+#env.Include([])
+
+
+# -------------------------- DECLARE DEPENDENCY LISTS ------------------------ #
+
+# SOURCE FILES
+source_files = [
+    'ZLib/zlib-1.2.11/crc32.c',
+]
+
+# INCLUDE DIRECTORIES
+include_dirs = [
+    'ZLib/zlib-1.2.11/'
+    
+]
+
+# INCLUDE FILES
+include_files = [
+]
+
+
+# ------------------ ADD FLAGS AND OTHER ENV. DATA NEEDED -------------------- #
+
+# ADD NEEDED BUILD/LINK FLAGS
+#env.Append(CFLAGS    = '')
+#env.Append(LINKFLAGS = '')
+#env.Append(ASFLAGS   = '')
+env.Append(CFLAGS    = '-DZ_SOLO ')  # if this is defined a malloc and free function needs to be defined for zlib
+
+# ADD NEEDED LIBRARIES
+#env.Append(LIBS    = '')
+#env.Append(LIBPATH = '')
+
+# -------------------------- APPEND OWN DEPENDENCIES ------------------------- #
+
+env.AppendDependencies( source_files, include_files, include_dirs )
