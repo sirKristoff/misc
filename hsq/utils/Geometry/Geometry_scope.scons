@@ -1,0 +1,51 @@
+
+# Import global build environment
+Import( 'env' )
+
+# -------------------------- INCLUDE DEPENDENCIES ------------------------ #
+# If the files are above the current SConscript file, use path relative
+# to root (that is '#/some/sub/directory' )
+
+# SCOPE FILE DEPENDENCIES
+env.Include([
+    'Impl/Angle/Angle_scope.scons',
+    'Impl/Coordinate2D/Coordinate2D_scope.scons',
+    'Impl/Line/Line_scope.scons',
+    'Impl/Path/Path_scope.scons',
+    'Impl/Polar/Polar_scope.scons',
+    'Impl/Polygon/Polygon_scope.scons',
+    'Impl/Shape/Shape_scope.scons',
+    'Impl/Vector2d/Vector2d_scope.scons',
+])
+
+# SOURCE FILES
+source_files = [
+    # All source files are listed in the respective submodule scopes
+]
+
+# INCLUDE DIRECTORIES
+include_dirs = [
+    # No additional include_dirs needed, let the build system collect all
+    # build directories from include_files instead.
+]
+
+# INCLUDE FILES
+include_files = [
+    'Interface/IGeometry.h',
+]
+
+# ADDITIONAL DEPENDENCIES
+additional_dependencies = [
+    'Doc/Geometry_doc.md',
+    'Geometry_scope.scons',
+]
+
+# Additional dependencies 
+additional_definitions = [
+    'Geometry_scope.scons',
+]
+
+# -------------------------- APPEND OWN DEPENDENCIES ------------------------- #
+
+env.AppendDependencies(source_files, include_files, include_dirs)
+env.AppendAdditionalDependencies( additional_dependencies )

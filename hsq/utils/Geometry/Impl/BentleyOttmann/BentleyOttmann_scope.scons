@@ -1,0 +1,39 @@
+# Import global build environment
+Import( 'env' )
+
+# -------------------------- INCLUDE DEPENDENCIES ------------------------ #
+# If the files are above the current SConscript file, use path relative
+# to root (that is '#/some/sub/directory' )
+
+# SCOPE FILE DEPENDENCIES
+#env.Include([])
+
+# SOURCE FILES
+source_files = [
+    'Impl/BentleyOttmann.c',
+    'Impl/SweepLine/SweepLine.c',
+    'Impl/EventQueue/EventQueue.c',
+]
+
+# INCLUDE DIRECTORIES
+include_dirs = [
+    # No additional include_dirs needed, let the build system collect all
+    # build directories from include_files instead.
+]
+
+# INCLUDE FILES
+include_files = [
+    'Impl/BentleyOttmann.h',
+    'Impl/SweepLine/SweepLine.h',
+    'Impl/EventQueue/EventQueue.h',
+]
+
+# ADDITIONAL DEPENDENCIES
+additional_dependencies = [
+    'Doc/BentleyOttmann_doc.md',
+]
+
+# -------------------------- APPEND OWN DEPENDENCIES ------------------------- #
+
+env.AppendDependencies(source_files, include_files, include_dirs)
+env.AppendAdditionalDependencies( additional_dependencies )
