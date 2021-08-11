@@ -1,0 +1,12 @@
+{
+    "name":"BinaryHeap Test Bundle",
+    "sequence":[
+        {
+            "file": "TestScript.py",
+            "methods":[
+                "testMinBinaryHeap",
+                "testMaxBinaryHeap"
+            ]
+        }
+    ]
+}
