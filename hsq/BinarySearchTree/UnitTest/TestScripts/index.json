@@ -1,0 +1,16 @@
+{
+    "name":"BinarySearchTree Test Bundle",
+    "sequence":[
+        {
+            "file": "TestScript.py",
+            "methods":[
+                "Insert",
+                "Remove",
+                "RemoveRoot",
+                "Search",
+                "Next",
+                "Previous"
+            ]
+        }
+    ]
+}

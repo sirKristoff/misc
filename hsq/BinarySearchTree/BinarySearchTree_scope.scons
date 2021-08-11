@@ -1,0 +1,35 @@
+# Import global build environment
+Import( 'env' )
+
+# -------------------------- INCLUDE DEPENDENCIES ------------------------ #
+# If the files are above the current SConscript file, use path relative
+# to root (that is '#/some/sub/directory' )
+
+# SCOPE FILE DEPENDENCIES
+#env.Include([])
+
+# SOURCE FILES
+source_files = [
+    'Impl/BinarySearchTree.c',
+]
+
+# INCLUDE DIRECTORIES
+include_dirs = [
+    # No additional include_dirs needed, let the build system collect all
+    # build directories from include_files instead.
+]
+
+# INCLUDE FILES
+include_files = [
+    'Impl/BinarySearchTree.h',
+    'Interface/IBinarySearchTree.h',
+]
+
+# DOCUMENTATIONS DEFINITIONS
+doc_definitions = [
+    'Doc/BinarySearchTree_doc.md',
+]
+# -------------------------- APPEND OWN DEPENDENCIES ------------------------- #
+
+env.AppendDependencies(source_files, include_files, include_dirs)
+env.AppendAdditionalDependencies( doc_definitions )
